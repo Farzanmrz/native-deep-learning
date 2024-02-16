@@ -10,6 +10,7 @@ This project contains a native implementation of deep learning algorithms and ex
 
 ## Dataset Descriptions
 Detailed information about the datasets used in this project can be found in the `/datasets` directory. Each dataset has an associated markdown file with an extensive description of its contents and preprocessing steps. See the links below for more details:
+- [Kid Creative Dataset](datasets/kid_creative_dataset.md)
 - [Medical Cost Personal Dataset](datasets/medical_cost_dataset.md)
 
 
