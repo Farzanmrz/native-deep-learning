@@ -20,7 +20,7 @@ class TestInputLayer(unittest.TestCase):
 		"""
 		Set up method to prepare the test fixture. This method is called before each test method.
 		"""
-		self.dataIn = np.random.randn(100, 5)  # Generate random input data
+		self.dataIn = np.random.randn(100, 5)
 		self.input_layer = InputLayer(self.dataIn)
 
 	def test_initialization( self ):

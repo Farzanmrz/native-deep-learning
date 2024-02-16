@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from layers import InputLayer, FullyConnectedLayer, SquaredError
-from helpers import smape, fProp, bProp
+from examples.helpers import smape, fProp, bProp
 
 
 def train_network( layers, xtrain, ytrain, xval, yval, epochs ):
@@ -41,7 +41,7 @@ def train_network( layers, xtrain, ytrain, xval, yval, epochs ):
 		mseval.append(val_loss)
 
 		# Early stopping condition based on change in loss
-		if epoch == epochs - 1 or np.abs(train_loss - prevmse) < 1e-10:
+		if epoch == epochs - 1 or np.all(np.abs(train_loss - prevmse) < 1e-10):
 
 			# Calculate root mean square error for the last epoch
 			rmsetrain = np.sqrt(train_loss)
@@ -84,7 +84,7 @@ def plot_metrics( msetrain, mseval ):
 	plt.title('Training and Validation MSE vs Epoch')
 	plt.legend()
 	plt.grid(True)
-	plt.savefig('../img/0_linear_medical_1.png')
+	plt.savefig('../img/LinSEMed_1.png')
 	plt.show()  # Display the plot
 
 
