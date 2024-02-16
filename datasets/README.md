@@ -1,6 +1,5 @@
 # Kid Creative Dataset
 
-## Overview
 The Kid Creative dataset is intended for binary classification tasks. It contains demographic and socioeconomic information for 673 individuals, recorded in a CSV file. This dataset is particularly useful for predicting marketing outcomes, such as the likelihood of a customer to purchase a product.
 
 ## Features
@@ -29,7 +28,6 @@ The first column, 'Observation Number', will be omitted from analyses as it does
 
 # Medical Cost Personal Dataset
 
-## Overview
 This dataset provides medical cost information for 1338 individuals in a CSV format, which can be used for regression analysis tasks. For more information, see the dataset on [Kaggle](https://www.kaggle.com/mirichoi0218/insurance).
 
 ## Features
