@@ -84,6 +84,7 @@ def plot_metrics( msetrain, mseval ):
 	plt.title('Training and Validation MSE vs Epoch')
 	plt.legend()
 	plt.grid(True)
+	plt.savefig('../img/0_linear_medical_1.png')
 	plt.show()  # Display the plot
 
 
