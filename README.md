@@ -38,7 +38,7 @@ Instructions on how to run the main analysis files and use the implemented layer
 
 
 ## License
-Specify your project's license here.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
