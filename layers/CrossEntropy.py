@@ -1,7 +1,6 @@
 # Imports
 import numpy as np
 
-
 class CrossEntropy:
 	"""
 	Cross Entropy Loss function.

@@ -3,6 +3,7 @@ import numpy as np
 from layers import FullyConnectedLayer
 
 
+
 def smape( y_true, y_pred ):
 	"""
 	Calculate the Symmetric Mean Absolute Percentage Error (SMAPE) between two arrays.
