@@ -27,8 +27,7 @@ The data for each person includes the following attributes:
 ## Preprocessing
 The first column, 'Observation Number', will be omitted from analyses as it does not provide predictive value. The second column, 'Buy', will serve as our binary target variable Y. The remaining 16 columns will constitute our feature data for the observation matrix X.
 
-## Usage
-This dataset can be used for various analyses that involve binary classification, such as predicting consumer behavior or market segmentation.
+---
 
 For further details on accessing and utilizing this dataset, please refer to the project's main `README.md`.
 
