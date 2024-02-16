@@ -8,6 +8,11 @@ This project contains a native implementation of deep learning algorithms and ex
 - `/layers`: Contains the implementation of input, fully connected, activation, and objective layers.
 - `/datasets`: Includes datasets for various analyses.
 
+## Dataset Descriptions
+Detailed information about the datasets used in this project can be found in the `/datasets` directory. Each dataset has an associated markdown file with an extensive description of its contents and preprocessing steps. See the links below for more details:
+- [Medical Cost Personal Dataset](datasets/medical_cost_dataset.md)
+
+
 ## Layers
 The layers are built on an abstract class `Layer.py` that defines a general architecture with `forward`, `backward`, and `gradient` methods.
 
