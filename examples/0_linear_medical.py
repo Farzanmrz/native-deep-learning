@@ -76,7 +76,7 @@ def plot_metrics( msetrain, mseval ):
 	:param mseval: List of validation MSE values.
 	"""
 	epochs = range(1, len(msetrain) + 1)
-	plt.figure(figsize = (8, 5))
+	plt.figure(figsize = (6, 4))
 	plt.plot(epochs, msetrain, label = 'Training MSE')
 	plt.plot(epochs, mseval, label = 'Validation MSE')
 	plt.xlabel('Epochs')
