@@ -27,6 +27,6 @@ Final RMSE Validation: 11064.706089564706
 Final SMAPE Training: 71.65843230171302
 Final SMAPE Validation: 68.3006723871572
 ```
-![Training and Validation MSE Plot](img/0_linear_medical_1.png)
+![Training and Validation MSE Plot](../img/0_linear_medical_1.png)
 
 
