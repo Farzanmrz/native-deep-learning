@@ -2,7 +2,6 @@
 
 The Kid Creative dataset is intended for binary classification tasks. It contains demographic and socioeconomic information for 673 individuals, recorded in a CSV file. This dataset is particularly useful for predicting marketing outcomes, such as the likelihood of a customer to purchase a product.
 
-## Features
 The data for each person includes the following attributes:
 
 1. `Buy`: Whether the individual made a purchase (binary target value, Y).
@@ -23,14 +22,12 @@ The data for each person includes the following attributes:
 16. `Prev Child Mag`: Indicates if the individual previously purchased a children's magazine.
 17. `Prev Parent Mag`: Indicates if the individual previously purchased a parenting magazine.
 
-## Preprocessing
 The first column, 'Observation Number', will be omitted from analyses as it does not provide predictive value. The second column, 'Buy', will serve as our binary target variable Y. The remaining 16 columns will constitute our feature data for the observation matrix X.
 
 # Medical Cost Personal Dataset
 
 This dataset provides medical cost information for 1338 individuals in a CSV format, which can be used for regression analysis tasks. For more information, see the dataset on [Kaggle](https://www.kaggle.com/mirichoi0218/insurance).
 
-## Features
 The dataset includes the following attributes for each person:
 
 1. `age`: The age of the individual.
@@ -41,5 +38,4 @@ The dataset includes the following attributes for each person:
 6. `region`: The beneficiary's residential area in the US, divided into four geographic regions - northeast, southeast, southwest, or northwest.
 7. `charges`: Individual medical costs billed by health insurance (the target variable for prediction).
 
-## Preprocessing
 The `sex` and `smoker` attributes have been converted into binary features for analysis purposes, effectively one-hot encoding these categories. The `region` feature has been transformed into a set of binary features as well. The `charges` data is included and will be the target variable for predictive modeling.
