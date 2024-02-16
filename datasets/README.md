@@ -39,3 +39,14 @@ The dataset includes the following attributes for each person:
 7. `charges`: Individual medical costs billed by health insurance (the target variable for prediction).
 
 The `sex` and `smoker` attributes have been converted into binary features for analysis purposes, effectively one-hot encoding these categories. The `region` feature has been transformed into a set of binary features as well. The `charges` data is included and will be the target variable for predictive modeling.
+
+# MNIST Handwritten Digit Database
+
+The MNIST Database is a dataset of hand-written digits from 0 to 9. It includes a set of 60,000 training samples and 10,000 testing samples, each of which is a 28 x 28 image. 
+
+To streamline processing, we have extracted 100 observations of each class from the training set and 10 observations of each class from the validation/testing set to form a new dataset. These are available in the files `mnist_train_100.csv` and `mnist_valid_10.csv`, respectively.
+
+Each file's format is such that every row represents an observation. The first column is the target class ranging from 0 to 9, while the remaining 784 columns are the pixel values that constitute the features of the image.
+
+For more information about the original dataset, visit the [MNIST Database website](http://yann.lecun.com/exdb/mnist/).
+
