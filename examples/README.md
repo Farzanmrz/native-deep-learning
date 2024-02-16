@@ -23,7 +23,7 @@ The examples adhere to a naming convention that aids in identifying the model st
 
 General Architecture: ``Input Layer → Fully Connected Layer → [Optional Activation Layer(s)] → Loss Layer``
 
-## 0_linear_medical.py
+## LinSEMed.py
 <p align="center">
 <code>Input Layer → Fully Connected Layer → Squared Error Objective Layer</code>
 </p>
