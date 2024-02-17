@@ -72,7 +72,7 @@ The Log Loss plot also shows a consistent decrease in loss, which implies that t
 </p>
 
 This section outlines the development and training of a neural network for the MNIST dataset,
-aimed at multi-class classification. The network's structure comprises an input layer, a fully
+aimed at multi-class classification of digits from 0 to 9. The network's structure comprises an input layer, a fully
 connected layer, a softmax activation layer, and ends with a cross-entropy layer for loss computation.
 Xavier Initialization and ADAM learning algorithms are employed to optimize the network's weights and 
 biases.
