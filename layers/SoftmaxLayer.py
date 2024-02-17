@@ -1,72 +1,72 @@
-# Imports
 from layers.Layer import Layer
 import numpy as np
 import pandas as pd
+import scipy
 
 class SoftmaxLayer(Layer):
     """
-    Softmax Layer class.
+    A layer that applies the softmax function to its input.
 
-    This class represents the softmax layer in a neural network, which computes
-    the softmax activation function over the input data.
-
-    Methods:
-        __init__: Initialize the softmax layer.
-        forward: Perform the forward pass through the softmax layer.
-        gradient: Compute the gradient of the softmax layer.
-        backward: Perform the backward pass through the softmax layer.
+    The softmax function is applied in the forward pass, converting input values
+    into probabilities that sum to 1 across each row. In the backward pass, it computes
+    the gradient of the loss with respect to the input of the softmax function.
     """
 
     def __init__(self):
         """
-        Initialize the softmax layer.
+        Initializes the SoftmaxLayer.
         """
         super().__init__()
 
     def forward(self, dataIn):
         """
-        Perform the forward pass through the softmax layer.
+        Performs the forward pass using the softmax function.
 
-        :param dataIn: Input data as an NxD matrix.
+        :param dataIn: Input data to the softmax layer, expected to be an NxD matrix
+                       where N is the number of samples and D is the dimensionality.
         :type dataIn: np.ndarray or pd.DataFrame
-        :return: Output of the softmax layer.
+        :return: The output of the softmax function applied to `dataIn`.
         :rtype: np.ndarray
         """
-        # Convert to numpy array if input is a pandas DataFrame
+        # Convert input to numpy array if it's a pandas DataFrame
         if isinstance(dataIn, pd.DataFrame):
             dataIn = dataIn.values
 
-        # Set previous input
         self.setPrevIn(dataIn)
-
-        # Compute softmax activation function
+        # Apply the softmax function
         numer = np.exp(dataIn - np.max(dataIn, axis=1, keepdims=True))
         denom = np.sum(numer, axis=1, keepdims=True)
         y = numer / denom
-
-        # Set previous output
         self.setPrevOut(y)
         return y
 
     def gradient(self):
         """
-        Compute the gradient of the softmax layer.
+        Computes the gradient of the softmax output with respect to the input.
 
-        :return: Gradient of the softmax layer.
+        This method computes the Jacobian matrix for each output of the softmax layer.
+
+        :return: An array of Jacobian matrices for each sample in the previous output.
         :rtype: np.ndarray
         """
-        # Compute gradient of softmax layer
-        y = self.getPrevOut()
-        return np.array([np.diag(y_i) - np.outer(y_i, y_i) for y_i in y])
+        return np.array([np.diagflat(y) - np.outer(y, y) for y in self.getPrevOut()])
 
     def backward(self, gradIn):
         """
-        Perform the backward pass through the softmax layer.
+        Performs the backward pass, computing the gradient of the loss function with respect to the input.
 
-        :param gradIn: Gradient of the loss with respect to the output of the subsequent layer.
-        :type gradIn: np.ndarray
-        :return: Gradient of the loss with respect to the input of the softmax layer.
+        :param gradIn: The gradient of the loss with respect to the output of the softmax layer.
+        :type gradIn: np.ndarray or scipy.sparse matrix
+        :return: The gradient of the loss with respect to the input of the softmax layer.
         :rtype: np.ndarray
         """
-        # Compute gradient of loss with respect to input of softmax layer
-        return np.einsum('...i,...ij', gradIn, self.gradient())
+        selfGrad = self.gradient()
+
+        # Convert sparse matrix gradients to dense, if necessary
+        if scipy.sparse.issparse(gradIn):
+            gradIn = gradIn.toarray()
+        if scipy.sparse.issparse(selfGrad):
+            selfGrad = selfGrad.toarray()
+
+        # Compute the dot product of the gradient with the softmax gradient
+        return np.einsum('...i,...ij->...j', gradIn, selfGrad)

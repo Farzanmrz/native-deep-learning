@@ -1,6 +1,6 @@
 # Imports
 import numpy as np
-from layers import FullyConnectedLayer
+from layers import FullyConnectedLayer, FullyConnectedLayer2
 
 
 
@@ -46,7 +46,7 @@ def fProp( layers, x, y ):
 	return activation, loss
 
 
-def bProp( layers, Y, h ):
+def bProp( layers, Y, h , t=0):
 	"""
 	Perform backward propagation through a list of layers for gradient calculation and weight update.
 
@@ -70,6 +70,9 @@ def bProp( layers, Y, h ):
 		# Update weights if the layer is a FullyConnectedLayer
 		if isinstance(layers[ i ], FullyConnectedLayer.FullyConnectedLayer):
 			layers[ i ].updateWeights(grad, 1e-4)
+
+		if isinstance(layers[ i ], FullyConnectedLayer2.FullyConnectedLayer2):
+			layers[ i ].updateWeights(newgrad, t)
 
 		# Update grad for the next iteration
 		grad = newgrad

@@ -64,3 +64,34 @@ Validation Accuracy: 89.78%
 
 The Log Loss plot also shows a consistent decrease in loss, which implies that the predicted probabilities are aligning closely with the actual outcomes. The closeness of the training and validation lines suggests the model is generalizing well and not just memorizing the training data.
 
+
+## SoftCEMN.py
+
+<p align="center">
+<code>Input Layer → Fully Connected Layer → Softmax Activation → Cross-Entropy Objective Layer</code>
+</p>
+
+This section outlines the development and training of a neural network for the MNIST dataset,
+aimed at multi-class classification. The network's structure comprises an input layer, a fully
+connected layer, a softmax activation layer, and ends with a cross-entropy layer for loss computation.
+Xavier Initialization and ADAM learning algorithms are employed to optimize the network's weights and 
+biases.
+
+The learning rate was set to 0.001, which was determined
+to be optimal through trial and error, balancing the speed of convergence against classification accuracy.
+The training was set to proceed for up to 10,000 epochs, which was considered a high enough range to
+reach actionable results without incurring excessive computational costs. Early stopping criteria
+were also incorporated to halt training if the validation loss began to rise or if the training
+loss showed minimal improvements, indicating that the model had effectively learned from the data
+and additional training would not yield significant gains.
+
+### Output
+```plaintext
+Training Accuracy: 100.00000%
+Validation Accuracy: 85.8586%
+```
+<p align="center">
+  <img src="../img/SoftCEMN_1.png" alt="Training and Validation CrossEntropy Plot">
+</p>
+
+The Cross-Entropy Loss plot demonstrates a significant decrease in loss, indicating that the model is effectively learning from the training data. The early convergence, reflected by the flattening of the loss curve, signifies that further training would yield minimal improvements. The difference in accuracy between the training and validation suggests that while the model has learned the training data perfectly, it may be slightly overfitting, which is an area for further investigation and refinement.

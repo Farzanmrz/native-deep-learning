@@ -1,5 +1,7 @@
 # Imports
 import numpy as np
+import scipy
+
 
 class CrossEntropy:
 	"""
@@ -25,8 +27,12 @@ class CrossEntropy:
 		:return: Cross entropy loss value.
 		:rtype: float
 		"""
-		# Calculate the cross entropy loss
-		return -np.mean(np.sum(Y * np.log(Yhat + epsilon), axis = 1))
+		if scipy.sparse.issparse(Y):
+			Y = Y.toarray()
+		if scipy.sparse.issparse(Yhat):
+			Yhat = Yhat.toarray()
+		return -np.mean(np.sum(Y * np.log(Yhat + epsilon), axis=1))
+
 
 	def gradient( self, Y, Yhat, epsilon = 1e-7 ):
 		"""
@@ -41,5 +47,6 @@ class CrossEntropy:
 		:return: Gradient of the cross entropy loss.
 		:rtype: np.ndarray
 		"""
+
 		# Calculate the gradient of the cross entropy loss
 		return -((Y) / (Yhat + epsilon))
