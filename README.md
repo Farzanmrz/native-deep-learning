@@ -5,17 +5,7 @@ This project contains a native implementation of deep learning algorithms and ex
 - `/layers`: Contains the implementation of input, fully connected, activation, and objective layers.
 - `/tests`: Contains unit tests for each layer which can be run individually to validate functionality.
 - `/datasets`: Includes datasets for various analyses.
-
-  - [README.md](datasets/README.md): Contains detailed information of each dataset used in this project
-    
 - `/examples`: Contains example scripts demonstrating the application of neural networks using the layers implemented in this project.
-
-  - [`helpers.py`](examples/helpers.py): Contains common functions used across multiple network examples.
-
-  - Naming convention:
-    - `0_linear_medical.py`: Indicates 0 activation layers, linear regression used, and applied to the Medical dataset.
-    - `1_logsig_kid.py`: Indicates 1 activation layer of the logistic sigmoid type, used on the Kid Creative dataset.
-  The pattern is `<number_of_activation_layers>_<type_of_activation_layer>_<dataset_name>`. Activation layer types are abbreviated as `linear`, `logsig` for logistic sigmoid, etc.
 
 ## Layers
 The layers are built on an abstract class `Layer.py` that defines a general architecture with `forward`, `backward`, and `gradient` methods. Each type of layer is specialized for its role within a neural network.
@@ -24,9 +14,12 @@ The layers are built on an abstract class `Layer.py` that defines a general arch
 The `InputLayer` is responsible for preprocessing the input data by normalizing it. This involves adjusting the data to have a mean of zero and a standard deviation of one, commonly known as z-scoring. This process helps with the convergence of the neural network during training.
 
 ### Fully Connected Layer
-The `FullyConnectedLayer` is a standard layer in neural networks where every input neuron is connected to every output neuron. It transforms the input data into output data through learned weights and biases. The transformation is a linear operation—weights are multiplied with the input data, and biases are added to these results.
+The `FullyConnectedLayer` is a fundamental component of neural networks where each input neuron is connected to every output neuron. It performs a linear transformation on the input data through learned weights and biases. In this implementation, weights and biases are initially set to random values within the range of \(-10^{-4}\) to \(10^{-4}\), to start the learning process from a neutral point. The default learning rate, \(\eta\), is set to 0.0001, as this rate has demonstrated consistent performance across different scenarios. This layer uses gradient descent to iteratively update its weights and biases, aiming to minimize the loss function during training.
 
-### Activation Functions
+### FullyConnectedLayer2
+The `FullyConnectedLayer2` extends the capabilities of the standard fully connected layer by incorporating Xavier weight initialization and ADAM learning for optimization. Xavier Initialization helps in setting the weights to values that are suitable for the activation function, promoting efficient learning from the outset. ADAM, an adaptive learning rate optimization algorithm, is used to update the weights and biases. It calculates adaptive learning rates for each parameter from estimates of first and second moments of the gradients, providing a more sophisticated approach to converging towards the minima of the loss function.
+
+### Activation Function Layers
 Implemented activation functions include:
 - **Linear**: For linear transformations.
 - **ReLU**: Rectified Linear Unit for non-linear activations.
@@ -34,7 +27,7 @@ Implemented activation functions include:
 - **Softmax**: For multi-class classification problems.
 - **Tanh**: Hyperbolic tangent function for scaled activations.
 
-### Objective Functions
+### Objective Function Layers
 Objective functions implemented for network evaluation include:
 - **LogLoss**: For binary classification.
 - **CrossEntropy**: For multi-class classification.
